@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul J Hirur - Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // blue-600
+                        secondary: '#1e293b', // slate-800
+                        accent: '#3b82f6', // blue-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .skill-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-bold text-xl text-slate-900">Rahul J Hirur<span class="text-primary">.</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                    <a href="#experience" class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                    <a href="#education" class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
+                    <a href="#projects" class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/rahulhirur" target="_blank" class="text-slate-500 hover:text-slate-900 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/rahulhirur/" target="_blank" class="text-slate-500 hover:text-[#0077b5] transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 rounded-full opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-indigo-100 rounded-full opacity-50 blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Computational Engineer</h2>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6">
+                    Applied AI & <br/>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Computer Vision</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
+                    Specializing in integrating LLMs and Vision pipelines into scalable industrial systems.
+                    Currently based in <span class="font-semibold text-slate-800"><i class="fas fa-map-marker-alt text-red-500 mr-1"></i>Bengaluru / Erlangen</span>.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:hirur.rahul@gmail.com" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-slate-900 hover:bg-slate-800 md:py-4 md:text-lg md:px-10 transition-all hover:shadow-lg">
+                        <i class="fas fa-envelope mr-2"></i> Contact Me
+                    </a>
+                    <button onclick="window.print()" class="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-base font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 md:py-4 md:text-lg md:px-10 transition-all">
+                        <i class="fas fa-file-pdf mr-2"></i> Download CV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Technical Expertise</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">A comprehensive toolkit focused on Deep Learning, Robotics, and Scalable Systems.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Card 1 -->
+                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+                        <i class="fas fa-brain text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Deep Learning</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">PyTorch</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">TensorFlow</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Hugging Face</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Open-CV</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Languages & Core</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Python</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">C / C++</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">SQL</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">ROS</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Web & Analytics</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Streamlit</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Dash</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Plotly</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Power BI</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+                        <i class="fas fa-server text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">DevOps & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Docker</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Kubernetes</span>
+                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Git/Jenkins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
+                <span class="bg-primary w-2 h-8 mr-4 rounded-full"></span> Work Experience
+            </h2>
+
+            <div class="space-y-12 relative border-l-2 border-slate-200 ml-3 md:ml-6">
+                
+                <!-- Job 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">Research Associate</h3>
+                        <span class="text-sm font-semibold text-primary bg-blue-50 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Feb 2025 - Dec 2025</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">FAPS Lehrstuhl (Production Automation) • Erlangen, Germany</div>
+                    <p class="text-slate-600 mb-4">AI based High-Precision 3D Reconstruction and Perception</p>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                        <li>Developed end-to-end <strong>GenAI 3D reconstruction pipeline</strong> for real-time robotic perception.</li>
+                        <li>Implemented <strong>Stereo & Monocular Foundation Models</strong> (NVIDIA FoundationStereo, DepthAnything).</li>
+                        <li>Designed PSP-based Prompt Depth Anything model for accurate depth calculation.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">Werkstudent Data Engineering & Analytics</h3>
+                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Apr 2023 - Nov 2025</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">Robert Bosch GmbH • Abstatt, Germany</div>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                        <li>Designed a <strong>Variational Autoencoder (VAE)</strong> to identify anomalies in ESP simulated data.</li>
+                        <li>Built a Plausibility Check dashboard using <strong>Streamlit</strong>, Docker, and Kubernetes.</li>
+                        <li>Developed a Python-based Project Assessment tool for ESP feasibility.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">System Interface Engineer</h3>
+                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Jan 2020 - Sep 2022</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">Robert Bosch - BGSW • Bengaluru, India</div>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                        <li>Developed a <strong>MobileNet-based CNN pipeline</strong> to analyze 3D CAD drawings.</li>
+                        <li>Built MATLAB ETL pipelines reducing manual analysis time by 95%.</li>
+                        <li>Engineered Jenkins pipelines to automate ESP simulation workflows.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section (Timeline Style) -->
+    <section id="education" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
+                <span class="bg-primary w-2 h-8 mr-4 rounded-full"></span> Education
+            </h2>
+
+            <div class="space-y-12 relative border-l-2 border-slate-200 ml-3 md:ml-6">
+                
+                <!-- Education 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">M.Sc. Computational Engineering</h3>
+                        <span class="text-sm font-semibold text-primary bg-blue-50 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Oct 2022 - Mar 2026</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">Friedrich Alexander Universität Erlangen-Nürnberg</div>
+                    <p class="text-slate-600 text-sm mb-2 font-semibold">Relevant Coursework:</p>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                        <li>Deep Learning</li>
+                        <li>Computer Vision</li>
+                        <li>Pattern Recognition</li>
+                        <li>Image Video and Multi-Dimensional Signal Processing</li>
+                    </ul>
+                </div>
+
+                <!-- Education 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">M.Sc. Computational Science</h3>
+                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Sep 2023 - Mar 2026</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">Università della Svizzera italiana, Switzerland</div>
+                    <p class="text-slate-600 text-sm mb-2 font-semibold">Double Degree Program Erasmus. Relevant Coursework:</p>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                        <li>Data Analytics</li>
+                        <li>Scientific Learning</li>
+                        <li>Efficient Computational Algorithm</li>
+                        <li>Robotics</li>
+                    </ul>
+                </div>
+
+                <!-- Education 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-slate-900">Bachelor in Engineering</h3>
+                        <span class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Aug 2015 - Aug 2019</span>
+                    </div>
+                    <div class="text-slate-600 font-medium mb-4">KLE Technological University, India</div>
+                    <div class="text-slate-600 text-sm bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                        Major in Mechanical Engineering and minor in Computer Science.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Dhan-UI</h3>
+                        <p class="text-sm text-primary font-medium mb-4">Multimodal Hands-Free Surgical Robot</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Implemented vision pipeline using MediaPipe for gesture tracking and Google Speech API for voice commands. Orchestrated via LLM for validated micro-instructions.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">MediaPipe</span>
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">LLM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-600"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">TSP Solver</h3>
+                        <p class="text-sm text-primary font-medium mb-4">Transformer vs Greedy Approach</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Developed a custom Transformer model to solve the traveling salesman problem. Conducted comparative analysis against conventional Greedy methods and hyperparameter tuning.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">PyTorch</span>
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Transformers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full">
+                    <div class="h-2 bg-gradient-to-r from-orange-500 to-red-600"></div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Robot Env ID</h3>
+                        <p class="text-sm text-primary font-medium mb-4">Real-time Obstacle Avoidance</p>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Custom MobileNet V2 CNN for real-time environment identification. Implemented random walk algorithm for motion planning in ROS2 and CoppeliaSim.
+                        </p>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                        <div class="flex gap-2">
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">ROS2</span>
+                            <span class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">CNN</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Languages -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Awards -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                        <i class="fas fa-trophy text-yellow-500 mr-3"></i> Honors & Awards
+                    </h2>
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-start">
+                            <div class="mt-1 mr-4 bg-yellow-50 rounded-full p-2 text-yellow-500">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Bosch Automation Hackathon 1st Prize</h4>
+                                <p class="text-sm text-slate-600 mt-1">Won for CV-based CAD drawing analyzer and generator (2021).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1 mr-4 bg-blue-50 rounded-full p-2 text-blue-500">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Bravo Award</h4>
+                                <p class="text-sm text-slate-600 mt-1">Presented for high effort and skillful contribution to the ESP project (Dec 2021).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                        <i class="fas fa-language text-primary mr-3"></i> Languages
+                    </h2>
+                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                        <div class="space-y-4">
+                            <!-- Language 1 -->
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                                <span class="font-medium text-slate-700">Kannada / Hindi</span>
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Native</span>
+                            </div>
+                            <!-- Language 2 -->
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+                                <span class="font-medium text-slate-700">English</span>
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced (C1)</span>
+                            </div>
+                            <!-- Language 3 -->
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-slate-700">German</span>
+                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Elementary (A2)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-white text-2xl font-bold mb-6">Let's Connect</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="mailto:hirur.rahul@gmail.com" class="hover:text-white transition-colors"><i class="fas fa-envelope fa-2x"></i></a>
+                <a href="https://linkedin.com/in/rahulhirur/" class="hover:text-white transition-colors"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="https://github.com/rahulhirur" class="hover:text-white transition-colors"><i class="fab fa-github fa-2x"></i></a>
+            </div>
+            <p class="text-sm">&copy; 2026 Rahul J Hirur. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
