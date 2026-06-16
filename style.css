@@ -1,0 +1,49 @@
+/* Custom Stylesheet for Portfolio */
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.skill-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
+.animate-scroll-reverse {
+    animation: scroll-reverse 35s linear infinite;
+}
+
+.animate-scroll-reverse:hover {
+    animation-play-state: paused;
+}
