@@ -1536,7 +1536,10 @@
         const lightboxClose = document.getElementById('lightbox-close');
 
         if (profileTrigger && lightbox && lightboxContent) {
-            const openLightbox = () => {
+            let openedByClick = false;
+
+            const openLightbox = (byClick = false) => {
+                openedByClick = byClick;
                 lightbox.classList.remove('opacity-0', 'pointer-events-none');
                 lightbox.classList.add('opacity-100', 'pointer-events-auto');
                 lightboxContent.classList.remove('scale-90');
@@ -1544,6 +1547,7 @@
             };
 
             const closeLightbox = () => {
+                openedByClick = false;
                 lightbox.classList.add('opacity-0', 'pointer-events-none');
                 lightbox.classList.remove('opacity-100', 'pointer-events-auto');
                 lightboxContent.classList.add('scale-90');
@@ -1553,7 +1557,7 @@
             // Click/tap toggles lightbox (mobile & PC)
             profileTrigger.addEventListener('click', (e) => {
                 if (lightbox.classList.contains('opacity-0')) {
-                    openLightbox();
+                    openLightbox(true);
                 } else {
                     closeLightbox();
                 }
@@ -1563,22 +1567,24 @@
             // Hover open (PC only)
             profileTrigger.addEventListener('mouseenter', () => {
                 if (window.matchMedia('(pointer: fine)').matches) {
-                    openLightbox();
+                    if (lightbox.classList.contains('opacity-0')) {
+                        openLightbox(false);
+                    }
                 }
             });
 
             // Hover close (PC only)
             profileTrigger.addEventListener('mouseleave', (e) => {
-                if (window.matchMedia('(pointer: fine)').matches) {
+                if (window.matchMedia('(pointer: fine)').matches && !openedByClick) {
                     const toElement = e.relatedTarget;
-                    if (toElement && !lightbox.contains(toElement) && toElement !== profileTrigger) {
+                    if (toElement && !lightboxContent.contains(toElement)) {
                         closeLightbox();
                     }
                 }
             });
 
-            lightbox.addEventListener('mouseleave', (e) => {
-                if (window.matchMedia('(pointer: fine)').matches) {
+            lightboxContent.addEventListener('mouseleave', (e) => {
+                if (window.matchMedia('(pointer: fine)').matches && !openedByClick) {
                     const toElement = e.relatedTarget;
                     if (toElement && toElement !== profileTrigger && !profileTrigger.contains(toElement)) {
                         closeLightbox();
