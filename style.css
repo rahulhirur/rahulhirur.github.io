@@ -91,13 +91,23 @@ body, nav, section, .skill-card, button, a, svg, path {
 .chatbot-orb {
     box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(99, 102, 241, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: orb-wiggle 15s infinite ease-in-out;
 }
 
 .chatbot-orb:hover {
-    animation: none;
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 10px 25px -3px rgba(99, 102, 241, 0.5), 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.chatbot-wiggle-wrapper {
+    animation: orb-wiggle 6s infinite ease-in-out;
+    will-change: transform;
+    display: block;
+    width: 56px;
+    height: 56px;
+}
+
+.chatbot-wiggle-wrapper:hover {
+    animation-play-state: paused;
 }
 
 /* Pulsing outer ring for Chatbot Orb */
@@ -127,20 +137,20 @@ body, nav, section, .skill-card, button, a, svg, path {
 }
 
 @keyframes orb-wiggle {
-    0%, 90%, 100% {
-        transform: scale(1) rotate(0deg);
+    0%, 66.67%, 100% {
+        transform: scale(1) translateY(0) rotate(0deg);
     }
-    92% {
-        transform: scale(1.1) rotate(-8deg);
+    73.33% {
+        transform: scale(1.08) translateY(-4px) rotate(-8deg);
     }
-    94% {
-        transform: scale(1.1) rotate(8deg);
+    80.0% {
+        transform: scale(1.08) translateY(-2px) rotate(8deg);
     }
-    96% {
-        transform: scale(1.1) rotate(-8deg);
+    86.67% {
+        transform: scale(1.08) translateY(-4px) rotate(-8deg);
     }
-    98% {
-        transform: scale(1.1) rotate(8deg);
+    93.33% {
+        transform: scale(1.08) translateY(-2px) rotate(8deg);
     }
 }
 
@@ -217,4 +227,212 @@ body, nav, section, .skill-card, button, a, svg, path {
 .dark .chat-panel-glow {
     box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.15);
 }
+
+/* --- Apple Glassmorphic Theme Styles --- */
+
+/* --- Dark Mode + Glass Theme Background --- */
+.glass body,
+.glass section,
+.glass #about,
+.glass #experience,
+.glass #education,
+.glass #projects,
+.glass #contact,
+.glass footer {
+    background-color: #0b0f17 !important;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(45, 212, 191, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(217, 70, 239, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #070a0f, #11131c) !important;
+    background-size: 100% 100% !important;
+    color: #cbd5e1 !important;
+}
+
+/* --- Light Mode + Glass Theme Background --- */
+html:not(.dark).glass body,
+html:not(.dark).glass section,
+html:not(.dark).glass #about,
+html:not(.dark).glass #experience,
+html:not(.dark).glass #education,
+html:not(.dark).glass #projects,
+html:not(.dark).glass #contact,
+html:not(.dark).glass footer {
+    background-color: #f3f4f6 !important;
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #f9fafb, #e5e7eb) !important;
+    background-size: 100% 100% !important;
+    color: #1f2937 !important;
+}
+
+/* --- Dark Mode Glass Cards --- */
+.glass .glass-nav,
+.glass .skill-card,
+.glass .project-card,
+.glass #chatbot-panel,
+.glass #chatbot-tooltip,
+.glass #mobile-menu,
+.glass .glass-card {
+    background: rgba(17, 24, 39, 0.45) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+/* --- Light Mode Glass Cards --- */
+html:not(.dark).glass .glass-nav,
+html:not(.dark).glass .skill-card,
+html:not(.dark).glass .project-card,
+html:not(.dark).glass #chatbot-panel,
+html:not(.dark).glass #chatbot-tooltip,
+html:not(.dark).glass #mobile-menu,
+html:not(.dark).glass .glass-card {
+    background: rgba(255, 255, 255, 0.55) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06) !important;
+    color: #1f2937 !important;
+}
+
+/* Glass card hover glow */
+.glass .skill-card:hover,
+.glass .project-card:hover {
+    border-color: rgba(99, 102, 241, 0.35) !important;
+    box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15), 0 0 20px rgba(99, 102, 241, 0.05) !important;
+    transform: translateY(-5px) scale(1.01) !important;
+}
+
+/* Title text colors */
+.glass h1,
+.glass h2,
+.glass h3,
+.glass h4,
+.glass span.font-bold,
+.glass strong,
+.glass .text-slate-900,
+.glass .dark\:text-white,
+.glass .text-slate-800 {
+    color: #ffffff !important;
+}
+
+html:not(.dark).glass h1,
+html:not(.dark).glass h2,
+html:not(.dark).glass h3,
+html:not(.dark).glass h4,
+html:not(.dark).glass span.font-bold,
+html:not(.dark).glass strong,
+html:not(.dark).glass .text-slate-900,
+html:not(.dark).glass .text-slate-800 {
+    color: #111827 !important;
+}
+
+/* Primary Accents */
+.glass .text-primary,
+.glass .text-indigo-600,
+.glass .dark\:text-indigo-400,
+.glass a:hover {
+    color: #4f46e5 !important; /* Indigo accent */
+}
+
+html:not(.dark).glass .text-primary,
+html:not(.dark).glass .text-indigo-600,
+html:not(.dark).glass a:hover {
+    color: #2563eb !important; /* Blue accent for light glass */
+}
+
+/* Border overrides */
+.glass .border-slate-200,
+.glass .border-slate-100,
+.glass .dark\:border-slate-800 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html:not(.dark).glass .border-slate-200,
+html:not(.dark).glass .border-slate-100 {
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Text grey overrides */
+.glass .text-slate-600,
+.glass .text-slate-500,
+.glass .dark\:text-slate-300 {
+    color: #94a3b8 !important;
+}
+
+html:not(.dark).glass .text-slate-600,
+html:not(.dark).glass .text-slate-500 {
+    color: #4b5563 !important;
+}
+
+/* Chat bubble styling overrides */
+.glass #chatbot-panel {
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+html:not(.dark).glass #chatbot-panel {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.glass #chatbot-messages .bg-slate-100,
+.glass #chatbot-messages .dark\:bg-slate-900\/60 {
+    background: rgba(30, 41, 59, 0.4) !important;
+    color: #f1f5f9 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html:not(.dark).glass #chatbot-messages .bg-slate-100 {
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: #1f2937 !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.glass #chatbot-messages .bg-gradient-to-tr,
+.glass #chatbot-messages .from-indigo-600 {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(79, 70, 229, 0.5)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+html:not(.dark).glass #chatbot-messages .bg-gradient-to-tr {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(99, 102, 241, 0.8)) !important;
+    color: #ffffff !important;
+}
+
+.glass .chat-chip {
+    background-color: rgba(30, 41, 59, 0.6) !important;
+    color: #cbd5e1 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html:not(.dark).glass .chat-chip {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #4b5563 !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Input styling overrides */
+.glass #chatbot-input {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+html:not(.dark).glass #chatbot-input {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #1f2937 !important;
+}
+
+.glass #chatbot-send-btn {
+    background: #4f46e5 !important;
+}
+
+html:not(.dark).glass #chatbot-send-btn {
+    background: #2563eb !important;
+}
+
 
