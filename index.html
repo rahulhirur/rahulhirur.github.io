@@ -1518,6 +1518,22 @@
                 }
             });
         });
+
+        // Mobile tap-to-expand for profile picture
+        const profileTrigger = document.querySelector('.hero-photo-trigger');
+        if (profileTrigger) {
+            profileTrigger.addEventListener('click', (e) => {
+                if (window.innerWidth < 1024) {
+                    profileTrigger.classList.toggle('expanded');
+                    e.stopPropagation();
+                }
+            });
+            document.addEventListener('click', () => {
+                if (profileTrigger.classList.contains('expanded')) {
+                    profileTrigger.classList.remove('expanded');
+                }
+            });
+        }
     </script>
 </body>
 
