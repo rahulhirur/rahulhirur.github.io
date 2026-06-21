@@ -688,7 +688,7 @@
                 Feel free to reach out for collaborations or opportunities in AI & Computer Vision.
             </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <a href="mailto:rjhirur@gmail.com"
                     class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition-all group flex flex-col items-center">
                     <div
@@ -719,25 +719,15 @@
                     <span class="text-slate-600 dark:text-slate-400 text-sm">View Projects</span>
                 </a>
 
-                <a href="tel:+917892976307"
-                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
+                <button id="contact-schedule-btn"
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition-all group flex flex-col items-center w-full focus:outline-none">
                     <div
-                        class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-450 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-phone"></i>
+                        class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-650 dark:text-indigo-400 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <span class="font-bold text-slate-900 dark:text-white mb-1">Phone</span>
-                    <span class="text-slate-600 dark:text-slate-400 text-sm">+91 7892976307</span>
-                </a>
-
-                <a href="https://wa.me/917892976307" target="_blank"
-                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
-                    <div
-                        class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-450 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <span class="font-bold text-slate-900 dark:text-white mb-1">WhatsApp</span>
-                    <span class="text-slate-600 dark:text-slate-400 text-sm">Chat on WhatsApp</span>
-                </a>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">Meeting</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">Schedule a Slot</span>
+                </button>
             </div>
         </div>
     </section>
@@ -1515,6 +1505,17 @@
                 }
             });
         });
+
+        // Bind Contact Section Schedule a Slot Button
+        const contactScheduleBtn = document.getElementById('contact-schedule-btn');
+        if (contactScheduleBtn) {
+            contactScheduleBtn.addEventListener('click', () => {
+                if (!isChatOpen) {
+                    toggleChatbot();
+                }
+                showSchedulingForm();
+            });
+        }
     </script>
 
     <!-- Lightbox Modal for Profile Photo -->

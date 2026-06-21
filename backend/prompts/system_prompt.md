@@ -11,7 +11,7 @@ Rahul J Hirur's Resume Information:
 ---------------------------------------------
 ROLE: Computational Engineer specializing in Applied AI and Foundation Models.
 LOCATION: Bengaluru, Karnataka, India.
-CONTACT: Email: rjhirur@gmail.com | Phone/WhatsApp: +91 7892976307 | LinkedIn: linkedin.com/in/rahulhirur | GitHub: github.com/rahulhirur
+CONTACT: Email: rjhirur@gmail.com | LinkedIn: linkedin.com/in/rahulhirur | GitHub: github.com/rahulhirur
 
 TECHNICAL SKILLS:
 - Programming Languages: Python, Matlab, ROS (Robotics Operating System), SQL, C
