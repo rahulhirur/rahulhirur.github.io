@@ -30,6 +30,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Decode Profile Image from Secret
+        env:
+          PROFILE_PHOTO_BASE64: ${{ secrets.PROFILE_PHOTO_BASE64 }}
+        run: |
+          if [ -n "$PROFILE_PHOTO_BASE64" ]; then
+            echo "Decoding profile image from secret..."
+            echo "$PROFILE_PHOTO_BASE64" | base64 --decode > profile.jpg
+          else
+            echo "No PROFILE_PHOTO_BASE64 secret provided, using default profile.jpg."
+          fi
+
       - name: Setup GitHub Pages Configuration
         uses: actions/configure-pages@v5
 
@@ -42,3 +53,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Deploy Backend to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd backend
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Deploy to Hugging Face Spaces"
+          git remote add hf https://rahulhirur:${HF_TOKEN}@huggingface.co/spaces/rahulhirur/rahulhirur-portfolio-ai
+          git push --force hf HEAD:main

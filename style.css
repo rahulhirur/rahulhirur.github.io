@@ -1,49 +1,248 @@
 /* Custom Stylesheet for Portfolio */
 
+/* Smooth transitions for theme switching */
+body, nav, section, .skill-card, button, a, svg, path {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, fill 0.4s ease, stroke 0.4s ease, box-shadow 0.4s ease;
+}
+
 .glass-nav {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* Dark mode adjustment for nav glassmorphism if fallback is needed */
+.dark .glass-nav {
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .skill-card {
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
 }
 
-@keyframes scroll {
-    0% {
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Floating Back to Top Button */
+#back-to-top-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.4s ease, border-color 0.4s ease;
+    transform: scale(0.8);
+}
+
+#back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s linear;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+/* Mobile & Tablet fallback for Profile Avatar */
+.hero-photo-trigger {
+    width: 96px;
+    height: 96px;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+.hero-photo-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    overflow: hidden;
+    border: 2px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.dark .hero-photo-container {
+    border-color: rgba(30, 41, 59, 0.8);
+}
+
+/* Premium Desktop Hover Transition: Jitter-Free Slide & Shift Layout */
+@media (min-width: 1024px) {
+    .hero-section-container {
+        position: relative;
+        min-height: 480px;
+    }
+    /* Trigger Wrapper: stationary anchor that grows its hit area */
+    .hero-photo-trigger {
+        position: absolute;
+        left: 5%;
+        top: -74px; /* Adjusted up 10px to center visual container at -64px */
+        width: 100px; /* 80px avatar + 10px buffer on each side */
+        height: 100px; /* 80px avatar + 10px buffer on each side */
+        border-radius: 0;
+        overflow: visible; /* Prevent shadow clipping */
+        z-index: 40;
+        cursor: pointer;
+        transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .hero-photo-trigger:hover {
+        width: 340px; /* 320px image + 10px buffer on each side */
+        height: 460px; /* Expands box down to keep cursor inside */
+    }
+    
+    /* Visual Container: moves and grows relative to wrapper */
+    .hero-photo-container {
+        position: absolute;
+        top: 10px; /* Centered in wrapper (10px buffer) */
+        left: 10px; /* Centered in wrapper (10px buffer) */
+        width: 80px;
+        height: 80px;
+        border-radius: 9999px;
+        overflow: hidden;
+        border: 2.5px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .dark .hero-photo-container {
+        border-color: rgba(51, 65, 85, 0.8);
+    }
+    
+    /* Animate the visual container inside when wrapper is hovered */
+    .hero-photo-trigger:hover .hero-photo-container {
+        top: 114px; /* slides down safely inside trigger (104px content top + 10px buffer) */
+        width: 320px;
+        height: 320px;
+        border-width: 4px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-text-block {
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         transform: translateX(0);
     }
-    100% {
-        transform: translateX(-50%);
+    
+    /* Shift text when trigger is hovered */
+    .hero-section-container:has(.hero-photo-trigger:hover) .hero-text-block {
+        transform: translateX(180px);
     }
 }
 
-@keyframes scroll-reverse {
+/* AI Chatbot Widget Styles */
+.chatbot-orb {
+    box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(99, 102, 241, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chatbot-orb:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 25px -3px rgba(99, 102, 241, 0.5), 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Pulsing outer ring for Chatbot Orb */
+.chatbot-orb::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 9999px;
+    border: 2px solid #6366f1;
+    opacity: 0;
+    animation: orb-pulse 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes orb-pulse {
     0% {
-        transform: translateX(-50%);
+        transform: scale(0.95);
+        opacity: 0.8;
     }
     100% {
-        transform: translateX(0);
+        transform: scale(1.15);
+        opacity: 0;
     }
 }
 
-.animate-scroll {
-    animation: scroll 30s linear infinite;
+.chat-panel {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.animate-scroll:hover {
-    animation-play-state: paused;
+/* Messages area customized scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
 }
 
-.animate-scroll-reverse {
-    animation: scroll-reverse 35s linear infinite;
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.animate-scroll-reverse:hover {
-    animation-play-state: paused;
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.3);
+    border-radius: 9999px;
 }
+
+.dark .chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(75, 85, 99, 0.5);
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.5);
+}
+
+/* Typing Indicator Animation */
+.typing-dots span {
+    width: 6px;
+    height: 6px;
+    background-color: currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1.0);
+    }
+}
+
+/* Fade-in for new messages */
+@keyframes msg-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-animate {
+    animation: msg-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Glow styles for premium dark mode card borders */
+.dark .chat-panel-glow {
+    box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.15);
+}
+

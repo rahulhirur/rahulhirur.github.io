@@ -1,0 +1,12 @@
+# Local profile photo assets
+profile.jpg
+profile_base64.txt
+
+# Python Virtual Environment and Caches
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# Local Environment Secrets
+backend/.env
+.env

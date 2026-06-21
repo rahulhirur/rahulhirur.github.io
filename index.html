@@ -12,6 +12,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -26,71 +27,102 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-sans antialiased">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="font-bold text-xl text-slate-900">Rahul J Hirur<span
+                    <span class="font-bold text-xl text-slate-900 dark:text-white">Rahul J Hirur<span
                             class="text-primary">.</span></span>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#about"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                     <a href="#skills"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
                     <a href="#experience"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
                     <a href="#education"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Education</a>
                     <a href="#projects"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
                     <a href="#contact"
-                        class="text-slate-600 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                        class="nav-link text-slate-600 dark:text-slate-350 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none mr-2" aria-label="Toggle theme">
+                        <i class="fas fa-moon text-xl block dark:hidden"></i>
+                        <i class="fas fa-sun text-xl hidden dark:block"></i>
+                    </button>
+
                     <a href="https://github.com/rahulhirur" target="_blank"
-                        class="text-slate-500 hover:text-slate-900 transition-colors">
+                        class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                         <i class="fab fa-github text-xl"></i>
                     </a>
                     <a href="https://linkedin.com/in/rahulhirur/" target="_blank"
-                        class="text-slate-500 hover:text-[#0077b5] transition-colors">
+                        class="text-slate-500 dark:text-slate-400 hover:text-[#0077b5] transition-colors mr-2">
                         <i class="fab fa-linkedin text-xl"></i>
                     </a>
+
+                    <!-- Mobile Hamburger Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary focus:outline-none" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950 transition-all duration-300">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#experience" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#education" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">Education</a>
+                <a href="#projects" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="mobile-nav-link block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 bg-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 rounded-full opacity-50 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-indigo-100 rounded-full opacity-50 blur-3xl">
+    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 bg-white dark:bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-indigo-100 dark:bg-indigo-900/20 rounded-full opacity-50 blur-3xl">
         </div>
 
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
+        <div class="max-w-7xl mx-auto relative z-10 px-4 sm:px-6 lg:px-8 hero-section-container">
+            <!-- Floating / Centered Profile Image Wrapper & Hover Trigger -->
+            <div class="hero-photo-trigger flex justify-center mb-10 lg:mb-0 z-30">
+                <div class="hero-photo-container">
+                    <img src="profile.jpg" alt="Rahul J Hirur" class="w-full h-full object-cover" />
+                </div>
+            </div>
+
+            <!-- Centered Text Block -->
+            <div class="text-center max-w-3xl mx-auto hero-text-block">
                 <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Computational Engineer</h2>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
                     Applied AI & <br />
                     <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Foundation
                         Models</span>
                 </h1>
-                <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed">
+                <p class="text-lg md:text-xl text-slate-650 dark:text-slate-350 mb-10 leading-relaxed">
                     Computational Engineer specializing in Applied AI and Foundation Models, with proven expertise in
                     integrating LLMs and machine learning pipelines into scalable industrial systems.
-                    Currently based in <span class="font-semibold text-slate-800"><i
+                    Currently based in <span class="font-semibold text-slate-800 dark:text-slate-100"><i
                             class="fas fa-map-marker-alt text-red-500 mr-1"></i>Bengaluru, Karnataka</span>.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#contact"
-                        class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-slate-900 hover:bg-slate-800 md:py-4 md:text-lg md:px-10 transition-all hover:shadow-lg">
+                        class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white dark:text-slate-900 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 md:py-4 md:text-lg md:px-10 transition-all hover:shadow-lg">
                         <i class="fas fa-envelope mr-2"></i> Contact Me
                     </a>
                     <a href="./CV_RahulJHirur.pdf" download target="_blank"
-                        class="inline-flex items-center justify-center px-8 py-3 border border-slate-300 text-base font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 md:py-4 md:text-lg md:px-10 transition-all">
+                        class="inline-flex items-center justify-center px-8 py-3 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 md:py-4 md:text-lg md:px-10 transition-all">
                         <i class="fas fa-file-pdf mr-2"></i> Download CV
                     </a>
                 </div>
@@ -99,204 +131,123 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-slate-50 relative overflow-hidden">
+    <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
             <div class="text-center">
-                <h2 class="text-3xl font-bold text-slate-900">Technical Expertise</h2>
-                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">A comprehensive toolkit focused on Deep Learning,
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Technical Expertise</h2>
+                <p class="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">A comprehensive toolkit focused on Deep Learning,
                     Robotics, and Scalable Systems.</p>
             </div>
         </div>
 
-        <!-- Conveyor Belt Wrapper -->
-        <div class="relative w-full overflow-hidden py-4">
+        <!-- Swipeable Wrapper -->
+        <div class="relative w-full py-4 group">
+            <!-- Left Arrow -->
+            <button id="skills-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-lg hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 disabled:opacity-0 disabled:pointer-events-none focus:outline-none" aria-label="Slide left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Right Arrow -->
+            <button id="skills-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-lg hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 disabled:opacity-0 disabled:pointer-events-none focus:outline-none" aria-label="Slide right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
             <!-- Left and Right Fades for premium glass/blend look -->
             <div
-                class="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none">
+                class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent z-10 pointer-events-none">
             </div>
             <div
-                class="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none">
+                class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent z-10 pointer-events-none">
             </div>
 
-            <!-- Conveyor Belt Track -->
-            <div class="animate-scroll flex gap-6 pr-6 w-max">
-                <!-- Original 5 Cards -->
+            <!-- Scroll Container -->
+            <div id="skills-track" class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-8 md:px-16 pb-4 cursor-grab active:cursor-grabbing select-none scroll-smooth">
                 <!-- Skill Card 1 -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4">
+                <div class="skill-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex-shrink-0 w-80 snap-center">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center text-green-600 dark:text-green-400 mb-4">
                         <i class="fas fa-code text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-3">Programming Languages</h3>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-3">Programming Languages</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Python</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Matlab</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">ROS</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">SQL</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">C</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Python</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Matlab</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">ROS</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">SQL</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">C</span>
                     </div>
                 </div>
 
                 <!-- Skill Card 2 -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
+                <div class="skill-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex-shrink-0 w-80 snap-center">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-450 mb-4">
                         <i class="fas fa-brain text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-3">Deep Learning</h3>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-3">Deep Learning</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">PyTorch</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">PyTorch</span>
                         <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">TensorFlow</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Hugging
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">TensorFlow</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Hugging
                             Face</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">NumPy</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Pandas</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">NumPy</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Pandas</span>
                         <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Scikit-Learn</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">OpenCV</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">RAG</span>
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Scikit-Learn</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">OpenCV</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">RAG</span>
                     </div>
                 </div>
 
                 <!-- Skill Card 3 -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
+                <div class="skill-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex-shrink-0 w-80 snap-center">
                     <div
-                        class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4">
+                        class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
                         <i class="fas fa-laptop-code text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-3">Web</h3>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-3">Web</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Streamlit</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Streamlit</span>
                         <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Javascript</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Dash</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Plotly</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Power BI</span>
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Javascript</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Dash</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Plotly</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Power BI</span>
                     </div>
                 </div>
 
                 <!-- Skill Card 4 -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
+                <div class="skill-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex-shrink-0 w-80 snap-center">
                     <div
-                        class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+                        class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mb-4">
                         <i class="fas fa-cloud text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-3">Cloud</h3>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-3">Cloud</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Azure</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Git</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Jenkins</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Azure</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Git</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Jenkins</span>
                         <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Kubernetes</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Docker</span>
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Kubernetes</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Docker</span>
                     </div>
                 </div>
 
                 <!-- Skill Card 5 -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
+                <div class="skill-card bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex-shrink-0 w-80 snap-center">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-slate-850 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-300 mb-4">
                         <i class="fas fa-tools text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-3">Others</h3>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-3">Others</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Siemens
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Siemens
                             NX</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">NXOpen</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">FastAPI</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">HiTL</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Digital Signal
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">NXOpen</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">FastAPI</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">HiTL</span>
+                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Digital Signal
                             Processing</span>
                         <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Statistics</span>
-                    </div>
-                </div>
-
-                <!-- Cloned 5 Cards (Duplicates for Seamless Loop) -->
-                <!-- Skill Card 1 (Clone) -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4">
-                        <i class="fas fa-code text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-3">Programming Languages</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Python</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Matlab</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">ROS</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">SQL</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">C</span>
-                    </div>
-                </div>
-
-                <!-- Skill Card 2 (Clone) -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4">
-                        <i class="fas fa-brain text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-3">Deep Learning</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">PyTorch</span>
-                        <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">TensorFlow</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Hugging
-                            Face</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">NumPy</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Pandas</span>
-                        <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Scikit-Learn</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">OpenCV</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">RAG</span>
-                    </div>
-                </div>
-
-                <!-- Skill Card 3 (Clone) -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div
-                        class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4">
-                        <i class="fas fa-laptop-code text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-3">Web</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Streamlit</span>
-                        <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Javascript</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Dash</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Plotly</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Power BI</span>
-                    </div>
-                </div>
-
-                <!-- Skill Card 4 (Clone) -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div
-                        class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
-                        <i class="fas fa-cloud text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-3">Cloud</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Azure</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Git</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Jenkins</span>
-                        <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Kubernetes</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Docker</span>
-                    </div>
-                </div>
-
-                <!-- Skill Card 5 (Clone) -->
-                <div class="skill-card bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex-shrink-0 w-80">
-                    <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 mb-4">
-                        <i class="fas fa-tools text-xl"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-3">Others</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Siemens
-                            NX</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">NXOpen</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">FastAPI</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">HiTL</span>
-                        <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Digital Signal
-                            Processing</span>
-                        <span
-                            class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Statistics</span>
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs rounded font-medium">Statistics</span>
                     </div>
                 </div>
             </div>
@@ -304,27 +255,27 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
+    <section id="experience" class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 flex items-center">
                 <span class="bg-primary w-2 h-8 mr-4 rounded-full"></span> Work Experience
             </h2>
 
-            <div class="space-y-12 relative border-l-2 border-slate-200 ml-3 md:ml-6">
+            <div class="space-y-12 relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-6">
 
                 <!-- Job 1 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-900 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">AI Engineer - Intelligent Automation</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">AI Engineer - Intelligent Automation</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Mar
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Mar
                             2026 - Present</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4"><b>Qentelli • Hyderabad, India</b></div>
-                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                    <div class="text-slate-600 dark:text-slate-350 font-medium mb-4"><b>Qentelli • Hyderabad, India</b></div>
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-slate-50 dark:bg-slate-950/50 p-4 rounded-lg">
                         <li>Engineered a hybrid <strong>deduplication pipeline</strong>, integrating deep semantic
                             embeddings with lexical similarity metrics to identify and isolate redundant test scenarios.
                         </li>
@@ -339,18 +290,18 @@
                 <!-- Job 2 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">Master Thesis - AI based High-Precision 3D
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Master Thesis - AI based High-Precision 3D
                             Reconstruction and Perception</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Feb
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Feb
                             2025 - Dec 2025</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4"><b>FAPS – Lehrstuhl für Fertigungsautomatisierung und
+                    <div class="text-slate-600 dark:text-slate-300 font-medium mb-4"><b>FAPS – Lehrstuhl für Fertigungsautomatisierung und
                             Produktionssystematik • Erlangen, Germany</b></div>
-                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-slate-50 dark:bg-slate-950/50 p-4 rounded-lg">
                         <li>Developed a full end-to-end 3D reconstruction <strong>Generative (GenAI) pipeline</strong>,
                             encompassing image acquisition, processing, and final 3D construction for real-time robotic
                             perception.</li>
@@ -368,17 +319,17 @@
                 <!-- Job 3 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">Werkstudent – Data Engineering and Analytics</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Werkstudent – Data Engineering and Analytics</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Apr
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Apr
                             2023 - Nov 2025</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4"><b>Robert Bosch GmbH – Vehicle Motion • Abstatt,
+                    <div class="text-slate-600 dark:text-slate-300 font-medium mb-4"><b>Robert Bosch GmbH – Vehicle Motion • Abstatt,
                             Germany</b></div>
-                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-slate-50 dark:bg-slate-950/50 p-4 rounded-lg">
                         <li>Developed <strong>metrics and algorithms</strong> to evaluate Electronic Stability Program
                             (ESP) simulation results.</li>
                         <li>Implemented a <strong>variational autoencoder (VAE)</strong> for anomaly detection in
@@ -398,16 +349,16 @@
                 <!-- Job 4 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">System Interface Engineer</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">System Interface Engineer</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Jan
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Jan
                             2020 - Sep 2022</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4"><b>Robert Bosch – BGSW • Bengaluru, India</b></div>
-                    <ul class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-slate-50 p-4 rounded-lg">
+                    <div class="text-slate-600 dark:text-slate-350 font-medium mb-4"><b>Robert Bosch – BGSW • Bengaluru, India</b></div>
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-slate-50 dark:bg-slate-950/50 p-4 rounded-lg">
                         <li>Analyzed and validated performance and fatigue loads for <strong>Brake Modulation
                                 Systems</strong> (ESP and IPB).</li>
                         <li>Developed <strong>MATLAB ETL pipelines</strong> to validate ESP simulation data, reducing
@@ -427,30 +378,30 @@
     </section>
 
     <!-- Education Section (Timeline Style) -->
-    <section id="education" class="py-20 bg-slate-50">
+    <section id="education" class="py-20 bg-slate-50 dark:bg-slate-950">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12 flex items-center">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12 flex items-center">
                 <span class="bg-primary w-2 h-8 mr-4 rounded-full"></span> Education
             </h2>
 
-            <div class="space-y-12 relative border-l-2 border-slate-200 ml-3 md:ml-6">
+            <div class="space-y-12 relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-6">
 
                 <!-- Education 1 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-slate-950 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">M.Sc. Computational Engineering</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">M.Sc. Computational Engineering</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Oct
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Oct
                             2022 - Mar 2026</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4">Friedrich Alexander Universität Erlangen-Nürnberg •
+                    <div class="text-slate-600 dark:text-slate-300 font-medium mb-4">Friedrich Alexander Universität Erlangen-Nürnberg •
                         Erlangen, Germany</div>
-                    <p class="text-slate-600 text-sm mb-2 font-semibold">Relevant Coursework:</p>
+                    <p class="text-slate-600 dark:text-slate-350 text-sm mb-2 font-semibold">Relevant Coursework:</p>
                     <ul
-                        class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                        class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-lg shadow-sm">
                         <li>Deep Learning</li>
                         <li>Computer Vision (CV)</li>
                         <li>Pattern Recognition (NLP)</li>
@@ -461,21 +412,21 @@
                 <!-- Education 2 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">M.Sc. Computational Science</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">M.Sc. Computational Science</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Sep
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Sep
                             2023 - Mar 2026</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4">Università della Svizzera italiana •
+                    <div class="text-slate-600 dark:text-slate-300 font-medium mb-4">Università della Svizzera italiana •
                         Lugano, Switzerland</div>
-                    <p class="text-slate-600 text-sm mb-2 font-semibold">Double Degree Program - Erasmus</p>
-                    <p class="text-slate-600 text-sm mb-2 font-semibold">Relevant
+                    <p class="text-slate-600 dark:text-slate-350 text-sm mb-2 font-semibold">Double Degree Program - Erasmus</p>
+                    <p class="text-slate-600 dark:text-slate-350 text-sm mb-2 font-semibold">Relevant
                         Coursework:</p>
                     <ul
-                        class="space-y-2 text-slate-600 text-sm list-disc list-inside bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                        class="space-y-2 text-slate-600 dark:text-slate-350 text-sm list-disc list-inside bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-lg shadow-sm">
                         <li>Data Analytics</li>
                         <li>Scientific Learning</li>
                         <li>Efficient Computational Algorithm</li>
@@ -486,16 +437,16 @@
                 <!-- Education 3 -->
                 <div class="relative pl-8 md:pl-12">
                     <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow">
+                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 shadow">
                     </div>
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                        <h3 class="text-xl font-bold text-slate-900">Bachelor in Engineering</h3>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Bachelor in Engineering</h3>
                         <span
-                            class="text-sm font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Aug
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full w-fit mt-2 sm:mt-0">Aug
                             2015 - Aug 2019</span>
                     </div>
-                    <div class="text-slate-600 font-medium mb-4">KLE Technological University • Hubballi, India</div>
-                    <div class="text-slate-600 text-sm bg-white border border-slate-100 p-4 rounded-lg shadow-sm">
+                    <div class="text-slate-600 dark:text-slate-300 font-medium mb-4">KLE Technological University • Hubballi, India</div>
+                    <div class="text-slate-600 dark:text-slate-350 text-sm bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-4 rounded-lg shadow-sm">
                         Major in Mechanical Engineering and minor in Computer Science.
                     </div>
                 </div>
@@ -505,38 +456,51 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 text-center">Featured Projects</h2>
+    <section id="projects" class="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center">Featured Projects</h2>
         </div>
 
-        <!-- Conveyor Belt Wrapper -->
-        <div class="relative w-full overflow-hidden py-4">
-            <!-- Left and Right Fades for seamless transition into white page background -->
-            <div
-                class="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
-            </div>
-            <div
-                class="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
-            </div>
+        <!-- Project Filter Buttons -->
+        <div class="flex justify-center flex-wrap gap-3 mb-10 max-w-7xl mx-auto px-4 relative z-20">
+            <button data-filter="all" class="project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow transition-all">All</button>
+            <button data-filter="ai" class="project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all">AI & ML</button>
+            <button data-filter="robotics" class="project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all">Robotics</button>
+            <button data-filter="systems" class="project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all">Software & Systems</button>
+        </div>
 
-            <!-- Conveyor Belt Track (Scrolling Left-to-Right) -->
-            <div class="animate-scroll-reverse flex gap-8 pr-8 w-max">
+        <!-- Swipeable Wrapper -->
+        <div id="projects-container-wrapper" class="relative w-full overflow-hidden py-4 group">
+            <!-- Left Arrow -->
+            <button id="projects-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-lg hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 disabled:opacity-0 disabled:pointer-events-none focus:outline-none" aria-label="Slide left">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Right Arrow -->
+            <button id="projects-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-lg hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 opacity-100 md:opacity-0 md:group-hover:opacity-100 disabled:opacity-0 disabled:pointer-events-none focus:outline-none" aria-label="Slide right">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Left and Right Fades for seamless transition into white page background -->
+            <div class="projects-fade-left absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-white dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
+            <div class="projects-fade-right absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10 pointer-events-none"></div>
+
+            <!-- Scroll Container -->
+            <div id="projects-track" class="flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-8 md:px-16 pb-4 cursor-grab active:cursor-grabbing select-none w-full scroll-smooth">
                 <!-- Original 3 Cards -->
                 <!-- Project 1 -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
+                <div data-category="ai robotics"
+                    class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem] snap-center">
                     <div class="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
                     <div class="p-6 flex-grow">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Dhan-UI</h3>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Dhan-UI</h3>
                             <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">Hackathon
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full whitespace-nowrap">Hackathon
                                 Winner</span>
                         </div>
-                        <p class="text-sm text-primary font-medium mb-4">Multimodal Hands-Free Surgical Robot Interface
-                        </p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
+                        <p class="text-sm text-primary font-medium mb-4">Multimodal Hands-Free Surgical Robot Interface</p>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-350 text-xs list-disc list-inside">
                             <li>Implemented a vision pipeline using <strong>MediaPipe</strong> to track and interpret
                                 hand gestures, converting hand’s spatial movements into string-based context for the
                                 Orchestrator LLM.</li>
@@ -548,33 +512,31 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-850 mt-auto">
                         <div class="flex gap-2">
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">MediaPipe</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">MediaPipe</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Speech
-                                API</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">Speech API</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">LLM</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">LLM</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
+                <div data-category="ai"
+                    class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem] snap-center">
                     <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-600"></div>
                     <div class="p-6 flex-grow">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Transformers Solving TSP</h3>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Transformers Solving TSP</h3>
                             <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">Deep
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full whitespace-nowrap">Deep
                                 Learning Lab</span>
                         </div>
-                        <p class="text-sm text-primary font-medium mb-4">Transformers Solving the Traveling Salesman
-                            Problem</p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
+                        <p class="text-sm text-primary font-medium mb-4">Transformers Solving the Traveling Salesman Problem</p>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-355 text-xs list-disc list-inside">
                             <li>Developed a custom <strong>Transformer model</strong> to optimize path cost for the
                                 traveling salesman problem.</li>
                             <li>Conducted <strong>statistical hypothesis testing</strong> to validate performance gains
@@ -583,32 +545,30 @@
                                 model performance.</li>
                         </ul>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-850 mt-auto">
                         <div class="flex gap-2">
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">PyTorch</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">PyTorch</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Transformers</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">Transformers</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Algorithms</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">Algorithms</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
+                <div data-category="robotics"
+                    class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-800 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem] snap-center">
                     <div class="h-2 bg-gradient-to-r from-orange-500 to-red-600"></div>
                     <div class="p-6 flex-grow">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Robotic Environment ID</h3>
+                            <h3 class="font-bold text-xl text-slate-900 dark:text-white">Robotic Environment ID</h3>
                             <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">USI
-                                IDISA</span>
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full whitespace-nowrap">USI IDISA</span>
                         </div>
-                        <p class="text-sm text-primary font-medium mb-4">Robotic Environment Identification and Obstacle
-                            Avoidance</p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
+                        <p class="text-sm text-primary font-medium mb-4">Robotic Environment Identification and Obstacle Avoidance</p>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-355 text-xs list-disc list-inside">
                             <li>Developed custom <strong>MobileNetV2 CNN model</strong> for real-time environment
                                 identification for MyT robot.</li>
                             <li>Tested various models like <strong>ResNet, YOLO</strong> for faster and leaner
@@ -619,123 +579,14 @@
                                 simulations.</li>
                         </ul>
                     </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
+                    <div class="px-6 py-4 bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-850 mt-auto">
                         <div class="flex gap-2">
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">ROS2</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">ROS2</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">CNN</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">CNN</span>
                             <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">CoppeliaSim</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cloned 3 Cards for Seamless Infinite Scroll -->
-                <!-- Project 1 (Clone) -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
-                    <div class="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Dhan-UI</h3>
-                            <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">Hackathon
-                                Winner</span>
-                        </div>
-                        <p class="text-sm text-primary font-medium mb-4">Multimodal Hands-Free Surgical Robot Interface
-                        </p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
-                            <li>Implemented a vision pipeline using <strong>MediaPipe</strong> to track and interpret
-                                hand gestures, converting hand’s spatial movements into string-based context for the
-                                Orchestrator LLM.</li>
-                            <li>Integrated <strong>Google Speech API</strong> to transcribe real-time voice commands,
-                                providing a parallel speech-to-text input stream to ensure redundancy in hands-free
-                                operation.</li>
-                            <li>Designed a central <strong>Orchestrator LLM</strong> using few-shot prompting to
-                                synthesize dual-channel inputs into structured, validated micro instruction commands.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
-                        <div class="flex gap-2">
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">MediaPipe</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Speech
-                                API</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">LLM</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 (Clone) -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
-                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-600"></div>
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Transformers Solving TSP</h3>
-                            <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">Deep
-                                Learning Lab</span>
-                        </div>
-                        <p class="text-sm text-primary font-medium mb-4">Transformers Solving the Traveling Salesman
-                            Problem</p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
-                            <li>Developed a custom <strong>Transformer model</strong> to optimize path cost for the
-                                traveling salesman problem.</li>
-                            <li>Conducted <strong>statistical hypothesis testing</strong> to validate performance gains
-                                over conventional greedy algorithms.</li>
-                            <li>Designed and executed <strong>hyperparameter tuning experiments</strong> to optimize
-                                model performance.</li>
-                        </ul>
-                    </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
-                        <div class="flex gap-2">
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">PyTorch</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Transformers</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">Algorithms</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 (Clone) -->
-                <div
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-slate-100 flex flex-col h-full flex-shrink-0 w-96 md:w-[28rem]">
-                    <div class="h-2 bg-gradient-to-r from-orange-500 to-red-600"></div>
-                    <div class="p-6 flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-slate-900">Robotic Environment ID</h3>
-                            <span
-                                class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap">USI
-                                IDISA</span>
-                        </div>
-                        <p class="text-sm text-primary font-medium mb-4">Robotic Environment Identification and Obstacle
-                            Avoidance</p>
-                        <ul class="space-y-2 text-slate-600 text-xs list-disc list-inside">
-                            <li>Developed custom <strong>MobileNetV2 CNN model</strong> for real-time environment
-                                identification for MyT robot.</li>
-                            <li>Tested various models like <strong>ResNet, YOLO</strong> for faster and leaner
-                                identification.</li>
-                            <li>Implemented obstacle avoidance-based <strong>random walk algorithm</strong> for robot
-                                motion planning in ROS2.</li>
-                            <li>Built multiple environments in <strong>CoppeliaSim</strong> for robot testing and
-                                simulations.</li>
-                        </ul>
-                    </div>
-                    <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 mt-auto">
-                        <div class="flex gap-2">
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">ROS2</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">CNN</span>
-                            <span
-                                class="text-xs font-mono text-slate-500 bg-white border border-slate-200 px-2 py-1 rounded">CoppeliaSim</span>
+                                class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2 py-1 rounded">CoppeliaSim</span>
                         </div>
                     </div>
                 </div>
@@ -744,44 +595,44 @@
     </section>
 
     <!-- Awards & Languages -->
-    <section class="py-20 bg-slate-50">
+    <section class="py-20 bg-slate-50 dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
                 <!-- Awards -->
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center">
                         <i class="fas fa-trophy text-yellow-500 mr-3"></i> Honors & Awards
                     </h2>
-                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
                         <div class="flex items-start">
-                            <div class="mt-1 mr-4 bg-yellow-50 rounded-full p-2 text-yellow-500 flex-shrink-0">
+                            <div class="mt-1 mr-4 bg-yellow-50 dark:bg-yellow-950/30 rounded-full p-2 text-yellow-500 dark:text-yellow-400 flex-shrink-0">
                                 <i class="fas fa-medal"></i>
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-slate-900">Bosch Automation Hackathon - First Prize</h4>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Bosch Automation Hackathon - First Prize</h4>
                                     <span
-                                        class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Jan
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">Jan
                                         2021</span>
                                 </div>
-                                <p class="text-sm text-slate-600 mt-1">Won the Bosch Automation Hackathon for the
+                                <p class="text-sm text-slate-600 dark:text-slate-350 mt-1">Won the Bosch Automation Hackathon for the
                                     presentation of a computer vision based CAD drawing analyzer and report generator at
                                     Bosch Global Software Technologies.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="mt-1 mr-4 bg-blue-50 rounded-full p-2 text-blue-500 flex-shrink-0">
+                            <div class="mt-1 mr-4 bg-blue-50 dark:bg-blue-950/30 rounded-full p-2 text-blue-500 dark:text-blue-400 flex-shrink-0">
                                 <i class="fas fa-star"></i>
                             </div>
                             <div class="flex-grow">
                                 <div class="flex justify-between items-start">
-                                    <h4 class="font-bold text-slate-900">Bravo Award</h4>
+                                    <h4 class="font-bold text-slate-900 dark:text-white">Bravo Award</h4>
                                     <span
-                                        class="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Dec
+                                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">Dec
                                         2021</span>
                                 </div>
-                                <p class="text-sm text-slate-600 mt-1">Presented for high effort and skillful
+                                <p class="text-sm text-slate-600 dark:text-slate-350 mt-1">Presented for high effort and skillful
                                     contribution towards the ESP project at Bosch Global Software Technologies.</p>
                             </div>
                         </div>
@@ -790,36 +641,36 @@
 
                 <!-- Languages -->
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-8 flex items-center">
                         <i class="fas fa-language text-primary mr-3"></i> Languages
                     </h2>
-                    <div class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm">
                         <div class="space-y-4">
                             <!-- Language 1 -->
-                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
-                                <span class="font-medium text-slate-700">Kannada</span>
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">English</span>
                                 <span
-                                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Native</span>
+                                    class="bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-450 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced
+                                    Fluency (C1)</span>
                             </div>
                             <!-- Language 2 -->
-                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
-                                <span class="font-medium text-slate-700">Hindi</span>
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">German</span>
                                 <span
-                                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Native</span>
+                                    class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Elementary
+                                    Fluency (A2)</span>
                             </div>
                             <!-- Language 3 -->
-                            <div class="flex justify-between items-center pb-3 border-b border-slate-100">
-                                <span class="font-medium text-slate-700">English</span>
+                            <div class="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Kannada</span>
                                 <span
-                                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced
-                                    Fluency (C1)</span>
+                                    class="bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Native</span>
                             </div>
                             <!-- Language 4 -->
                             <div class="flex justify-between items-center">
-                                <span class="font-medium text-slate-700">German</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Hindi</span>
                                 <span
-                                    class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Elementary
-                                    Fluency (A2)</span>
+                                    class="bg-green-100 dark:bg-green-950/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Native</span>
                             </div>
                         </div>
                     </div>
@@ -830,64 +681,64 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-blue-50">
+    <section id="contact" class="py-20 bg-blue-50 dark:bg-indigo-950/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center justify-center">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 flex items-center justify-center">
                 <span class="bg-primary w-2 h-8 mr-4 rounded-full"></span> Contact Me
             </h2>
-            <p class="text-slate-600 mb-12 text-lg">
+            <p class="text-slate-600 dark:text-slate-350 mb-12 text-lg">
                 Feel free to reach out for collaborations or opportunities in AI & Computer Vision.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12">
                 <a href="mailto:rjhirur@gmail.com"
-                    class="p-6 bg-white rounded-xl border border-slate-100 hover:border-primary hover:shadow-md transition-all group flex flex-col items-center">
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-primary dark:hover:border-primary hover:shadow-md transition-all group flex flex-col items-center">
                     <div
-                        class="w-12 h-12 bg-blue-100 text-primary rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-primary rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <span class="font-bold text-slate-900 mb-1">Email</span>
-                    <span class="text-slate-600 text-sm">rjhirur@gmail.com</span>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">Email</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">rjhirur@gmail.com</span>
                 </a>
 
                 <a href="https://linkedin.com/in/rahulhirur/" target="_blank"
-                    class="p-6 bg-white rounded-xl border border-slate-100 hover:border-[#0077b5] hover:shadow-md transition-all group flex flex-col items-center">
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-[#0077b5] dark:hover:border-[#0077b5] hover:shadow-md transition-all group flex flex-col items-center">
                     <div
-                        class="w-12 h-12 bg-blue-50 text-[#0077b5] rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 text-[#0077b5] rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
                         <i class="fab fa-linkedin-in"></i>
                     </div>
-                    <span class="font-bold text-slate-900 mb-1">LinkedIn</span>
-                    <span class="text-slate-600 text-sm">Connect on LinkedIn</span>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">LinkedIn</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">Connect on LinkedIn</span>
                 </a>
 
                 <a href="https://github.com/rahulhirur" target="_blank"
-                    class="p-6 bg-white rounded-xl border border-slate-100 hover:border-slate-800 hover:shadow-md transition-all group flex flex-col items-center">
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-slate-800 dark:hover:border-white hover:shadow-md transition-all group flex flex-col items-center">
                     <div
-                        class="w-12 h-12 bg-slate-200 text-slate-800 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        class="w-12 h-12 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
                         <i class="fab fa-github"></i>
                     </div>
-                    <span class="font-bold text-slate-900 mb-1">GitHub</span>
-                    <span class="text-slate-600 text-sm">View Projects</span>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">GitHub</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">View Projects</span>
                 </a>
 
                 <a href="tel:+917892976307"
-                    class="p-6 bg-white rounded-xl border border-slate-100 hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
                     <div
-                        class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-450 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <span class="font-bold text-slate-900 mb-1">Phone</span>
-                    <span class="text-slate-600 text-sm">+91 7892976307</span>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">Phone</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">+91 7892976307</span>
                 </a>
 
                 <a href="https://wa.me/917892976307" target="_blank"
-                    class="p-6 bg-white rounded-xl border border-slate-100 hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
+                    class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-green-500 dark:hover:border-green-500 hover:shadow-md transition-all group flex flex-col items-center">
                     <div
-                        class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                        class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-450 rounded-full flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <span class="font-bold text-slate-900 mb-1">WhatsApp</span>
-                    <span class="text-slate-600 text-sm">Chat on WhatsApp</span>
+                    <span class="font-bold text-slate-900 dark:text-white mb-1">WhatsApp</span>
+                    <span class="text-slate-600 dark:text-slate-400 text-sm">Chat on WhatsApp</span>
                 </a>
             </div>
         </div>
@@ -900,6 +751,774 @@
         </div>
     </footer> -->
 
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top-btn" class="fixed bottom-24 right-6 z-40 w-12 h-12 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary transition-all focus:outline-none" aria-label="Back to top">
+        <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 36 36">
+            <path
+                class="text-slate-100 dark:text-slate-800"
+                stroke-width="3"
+                stroke="currentColor"
+                fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path
+                id="progress-circle"
+                class="text-primary progress-ring__circle"
+                stroke-width="3"
+                stroke-dasharray="100, 100"
+                stroke-dashoffset="100"
+                stroke-linecap="round"
+                stroke="currentColor"
+                fill="none"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+        </svg>
+        <i class="fas fa-arrow-up text-sm z-10"></i>
+    </button>
+
+    <!-- AI Chatbot Floating Button -->
+    <button id="chatbot-launcher-btn" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-xl flex items-center justify-center transition-all duration-300 focus:outline-none chatbot-orb" aria-label="Open AI Assistant">
+        <i class="fas fa-robot text-xl"></i>
+        <!-- Pulse Status Indicator -->
+        <span class="absolute top-0 right-0 flex h-3.5 w-3.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white dark:border-slate-900"></span>
+        </span>
+    </button>
+
+    <!-- AI Chatbot Panel -->
+    <div id="chatbot-panel" class="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[550px] max-h-[calc(100vh-8rem)] rounded-2xl flex flex-col bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-2xl transition-all duration-300 transform scale-95 translate-y-4 opacity-0 pointer-events-none chat-panel chat-panel-glow">
+        <!-- Chat Header -->
+        <div class="p-4 bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white rounded-t-2xl flex items-center justify-between border-b border-slate-200/10">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center shadow-md">
+                    <i class="fas fa-robot text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold tracking-wide">Rahul's AI Assistant</h3>
+                    <div class="flex items-center space-x-1.5 mt-0.5">
+                        <span class="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse"></span>
+                        <span class="text-xs text-slate-300">Active & Ready</span>
+                    </div>
+                </div>
+            </div>
+            <button id="chatbot-close-btn" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300 hover:text-white transition-all focus:outline-none">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chatbot-messages" class="flex-1 overflow-y-auto p-4 space-y-4 chat-messages">
+            <!-- Welcome Message -->
+            <div class="flex items-start space-x-2.5 max-w-[85%] message-animate">
+                <div class="w-7 h-7 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0">
+                    <i class="fas fa-robot text-xs"></i>
+                </div>
+                <div class="p-3 bg-slate-100 dark:bg-slate-900/60 text-slate-800 dark:text-slate-250 text-sm rounded-2xl rounded-tl-none border border-slate-200/40 dark:border-slate-800/40 shadow-sm leading-relaxed">
+                    Hi! I'm Rahul's AI assistant. Ask me anything about his technical expertise, projects, work experience, or background.
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestion Chips Container -->
+        <div id="chat-chips-container" class="px-4 py-2 border-t border-slate-100 dark:border-slate-900/60 bg-slate-50/50 dark:bg-slate-950/20">
+            <div class="flex gap-2 overflow-x-auto scrollbar-hide py-1">
+                <button class="chat-chip flex-shrink-0 px-3 py-1.5 text-xs font-medium rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-355 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none shadow-sm">
+                    Tell me about Dhan-UI
+                </button>
+                <button class="chat-chip flex-shrink-0 px-3 py-1.5 text-xs font-medium rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-355 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none shadow-sm">
+                    What are your AI/ML skills?
+                </button>
+                <button class="chat-chip flex-shrink-0 px-3 py-1.5 text-xs font-medium rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-355 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none shadow-sm">
+                    Work experience at Bosch
+                </button>
+                <button class="chat-chip schedule-chip flex-shrink-0 px-3 py-1.5 text-xs font-medium rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all focus:outline-none shadow-sm">
+                    📅 Schedule a Meeting
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chatbot-form" class="p-3 border-t border-slate-200/50 dark:border-slate-800/50 flex items-center space-x-2 bg-white dark:bg-slate-950 rounded-b-2xl">
+            <input id="chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" class="flex-1 px-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 text-slate-800 dark:text-slate-100 placeholder-slate-400 transition-all">
+            <button type="submit" id="chatbot-send-btn" class="w-10 h-10 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center transition-all focus:outline-none shadow-md">
+                <i class="fas fa-paper-plane text-sm"></i>
+            </button>
+        </form>
+    </div>
+
+
+    <!-- JavaScript logic for portfolio upgrades -->
+    <script>
+        // --- 1. Dark Mode Toggle & Preference Initialization ---
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        
+        // Check local storage or system preference
+        const initTheme = () => {
+            if (localStorage.getItem('theme') === 'dark' || 
+                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        };
+        initTheme();
+
+        darkModeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // --- 2. Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMobileMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenuIcon.className = isHidden ? 'fas fa-bars text-xl' : 'fas fa-times text-xl';
+        };
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.className = 'fas fa-bars text-xl';
+            });
+        });
+
+        // --- 3. Scroll-Spy Link Highlighting ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const highlightNav = () => {
+            let scrollY = window.pageYOffset;
+            
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                // Offset by navbar height (16 = 64px) plus padding
+                const sectionTop = current.offsetTop - 80;
+                const sectionId = current.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    // Desktop links
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-primary', 'font-semibold');
+                        link.classList.add('text-slate-600', 'dark:text-slate-350');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.remove('text-slate-600', 'dark:text-slate-355');
+                            link.classList.add('text-primary', 'font-semibold');
+                        }
+                    });
+                    // Mobile links
+                    mobileLinks.forEach(link => {
+                        link.classList.remove('text-primary', 'font-semibold');
+                        link.classList.add('text-slate-600', 'dark:text-slate-300');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.remove('text-slate-600', 'dark:text-slate-300');
+                            link.classList.add('text-primary', 'font-semibold');
+                        }
+                    });
+                }
+            });
+        };
+        window.addEventListener('scroll', highlightNav);
+
+        // --- 4. Interactive Project Filter Tags & Navigation Setup ---
+        const filterButtons = document.querySelectorAll('.project-filter-btn');
+        const projectTrack = document.getElementById('projects-track');
+        const originalCards = projectTrack.querySelectorAll('.project-card');
+        const fadeLeft = document.querySelector('.projects-fade-left');
+        const fadeRight = document.querySelector('.projects-fade-right');
+        const projectsPrev = document.getElementById('projects-prev');
+        const projectsNext = document.getElementById('projects-next');
+
+        // Setup Drag and Arrow Click Scroll Utility
+        const setupDragAndArrowScroll = (trackId, prevId, nextId) => {
+            const track = document.getElementById(trackId);
+            const prevBtn = document.getElementById(prevId);
+            const nextBtn = document.getElementById(nextId);
+            
+            if (!track || !prevBtn || !nextBtn) return;
+            
+            // --- Arrow Click Scrolling ---
+            const scrollByCard = (direction) => {
+                const card = track.querySelector('.skill-card, .project-card');
+                if (!card) return;
+                const cardWidth = card.getBoundingClientRect().width;
+                const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+                const scrollAmount = cardWidth + gap;
+                track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            };
+            
+            prevBtn.addEventListener('click', () => scrollByCard(-1));
+            nextBtn.addEventListener('click', () => scrollByCard(1));
+            
+            // --- Arrow Visibility / Disable Checks ---
+            const updateArrows = () => {
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                const isAtStart = track.scrollLeft <= 5;
+                const isAtEnd = track.scrollLeft >= maxScroll - 5;
+                
+                prevBtn.disabled = isAtStart;
+                nextBtn.disabled = isAtEnd;
+            };
+            
+            track.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+            
+            // Initial check after rendering
+            setTimeout(updateArrows, 100);
+            
+            // --- Mouse Drag-Scroll Logic ---
+            let isDown = false;
+            let startX;
+            let scrollLeftVal;
+            
+            track.addEventListener('mousedown', (e) => {
+                if (e.target.closest('button') || e.target.closest('a')) return;
+                isDown = true;
+                track.classList.add('cursor-grabbing');
+                track.classList.remove('cursor-grab');
+                startX = e.pageX - track.offsetLeft;
+                scrollLeftVal = track.scrollLeft;
+            });
+            
+            track.addEventListener('mouseleave', () => {
+                isDown = false;
+                track.classList.remove('cursor-grabbing');
+                track.classList.add('cursor-grab');
+            });
+            
+            track.addEventListener('mouseup', () => {
+                isDown = false;
+                track.classList.remove('cursor-grabbing');
+                track.classList.add('cursor-grab');
+            });
+            
+            track.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                track.scrollLeft = scrollLeftVal - walk;
+            });
+        };
+
+        // Initialize scroll controls
+        setupDragAndArrowScroll('skills-track', 'skills-prev', 'skills-next');
+        setupDragAndArrowScroll('projects-track', 'projects-prev', 'projects-next');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active styling from all filter buttons
+                filterButtons.forEach(b => {
+                    b.className = "project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all";
+                });
+                // Add active styling to clicked button
+                btn.className = "project-filter-btn px-4 py-2 text-sm font-semibold rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow transition-all";
+
+                const category = btn.getAttribute('data-filter');
+
+                if (category === 'all') {
+                    // Restore swipeable horizontal list
+                    fadeLeft.classList.remove('hidden');
+                    fadeRight.classList.remove('hidden');
+                    projectsPrev.classList.remove('hidden');
+                    projectsNext.classList.remove('hidden');
+                    
+                    projectTrack.className = "flex gap-8 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-8 md:px-16 pb-4 cursor-grab active:cursor-grabbing select-none w-full scroll-smooth transition-all duration-500";
+                    
+                    // Show all cards
+                    originalCards.forEach(card => card.classList.remove('hidden'));
+                    
+                    // Re-evaluate arrows after styling changes
+                    setTimeout(() => {
+                        const maxScroll = projectTrack.scrollWidth - projectTrack.clientWidth;
+                        projectsPrev.disabled = projectTrack.scrollLeft <= 5;
+                        projectsNext.disabled = projectTrack.scrollLeft >= maxScroll - 5;
+                    }, 100);
+                } else {
+                    // Turn into a static grid
+                    fadeLeft.classList.add('hidden');
+                    fadeRight.classList.add('hidden');
+                    projectsPrev.classList.add('hidden');
+                    projectsNext.classList.add('hidden');
+                    
+                    projectTrack.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-8 w-full justify-items-center transition-all duration-500";
+                    
+                    // Show or hide cards based on category
+                    originalCards.forEach(card => {
+                        const cardCats = card.getAttribute('data-category').split(' ');
+                        if (cardCats.includes(category)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+
+        // --- 5. Floating Back to Top Button & Scroll Progress ---
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+        const progressCircle = document.getElementById('progress-circle');
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            // Update circular progress (circumference is exactly 100 since radius is 15.9155)
+            const offset = 100 - scrollPercent;
+            progressCircle.style.strokeDashoffset = offset;
+
+            // Show or hide button based on scroll depth (visible after scrolling 300px)
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // --- 6. AI Chatbot Widget Logic ---
+        const chatbotLauncherBtn = document.getElementById('chatbot-launcher-btn');
+        const chatbotPanel = document.getElementById('chatbot-panel');
+        const chatbotCloseBtn = document.getElementById('chatbot-close-btn');
+        const chatbotForm = document.getElementById('chatbot-form');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatChips = document.querySelectorAll('.chat-chip');
+        const chatChipsContainer = document.getElementById('chat-chips-container');
+
+        let isChatOpen = false;
+        let chatHistory = []; // Tracks formatting: [{"role": "user"|"model", "text": "..."}]
+        let schedulingFormActive = false; // Guard to prevent duplicate forms
+
+        // Toggle panel
+        const toggleChatbot = () => {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatbotPanel.classList.remove('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-4');
+                chatbotPanel.classList.add('opacity-100', 'pointer-events-auto', 'scale-100', 'translate-y-0');
+                chatbotInput.focus();
+                // Push Back to Top button z-index down so it doesn't float over the panel
+                backToTopBtn.style.zIndex = "30";
+            } else {
+                chatbotPanel.classList.add('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-4');
+                chatbotPanel.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100', 'translate-y-0');
+                backToTopBtn.style.zIndex = "40";
+            }
+        };
+
+        chatbotLauncherBtn.addEventListener('click', toggleChatbot);
+        chatbotCloseBtn.addEventListener('click', toggleChatbot);
+
+        // Markdown formatter: bold, bullet lists, and clickable links
+        const formatMessage = (text) => {
+            // Step 1: Extract markdown links BEFORE HTML escaping so URLs survive.
+            // Replace [label](url) with a safe placeholder, store the pair.
+            const links = [];
+            let processed = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_, label, url) => {
+                const idx = links.length;
+                links.push({ label, url });
+                return `\x00LINK${idx}\x00`;
+            });
+
+            // Also extract bare https?:// URLs (not already wrapped in a markdown link)
+            processed = processed.replace(/(https?:\/\/[^\s<>"']+)/g, (url) => {
+                const idx = links.length;
+                links.push({ label: url, url });
+                return `\x00LINK${idx}\x00`;
+            });
+
+            // Step 2: HTML-escape the remaining text
+            let formatted = processed
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+            // Step 3: Format bold (**text**)
+            formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            // Step 4: Format bullet lists (lines starting with * or -)
+            const lines = formatted.split('\n');
+            const parsedLines = lines.map(line => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+                    return `<span class="pl-4 block">• ${trimmed.substring(2)}</span>`;
+                }
+                return line;
+            });
+            formatted = parsedLines.join('<br>');
+
+            // Step 5: Restore links as real <a> tags
+            formatted = formatted.replace(/\x00LINK(\d+)\x00/g, (_, idx) => {
+                const { label, url } = links[parseInt(idx)];
+                const safeUrl  = url.replace(/"/g, '%22');
+                const safeLabel = label.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="text-indigo-500 dark:text-indigo-400 underline underline-offset-2 hover:text-indigo-700 dark:hover:text-indigo-300 break-all">${safeLabel}</a>`;
+            });
+
+            return formatted;
+        };
+
+        // Scroll messages to bottom
+        const scrollToBottom = () => {
+            chatbotMessages.scrollTo({
+                top: chatbotMessages.scrollHeight,
+                behavior: 'smooth'
+            });
+        };
+
+        // Add message bubble to container
+        const appendMessage = (role, text) => {
+            const isUser = role === 'user';
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex items-start space-x-2.5 max-w-[85%] ${isUser ? 'ml-auto flex-row-reverse space-x-reverse' : ''} message-animate`;
+
+            const avatarHtml = isUser 
+                ? `
+                    <div class="w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center text-white flex-shrink-0 shadow-sm">
+                        <i class="fas fa-user text-xs"></i>
+                    </div>
+                  `
+                : `
+                    <div class="w-7 h-7 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0">
+                        <i class="fas fa-robot text-xs"></i>
+                    </div>
+                  `;
+
+            const bubbleClass = isUser
+                ? 'bg-gradient-to-tr from-indigo-600 to-violet-600 text-white rounded-2xl rounded-tr-none shadow-md'
+                : 'bg-slate-100 dark:bg-slate-900/60 text-slate-800 dark:text-slate-250 rounded-2xl rounded-tl-none border border-slate-200/40 dark:border-slate-800/40 shadow-sm';
+
+            messageDiv.innerHTML = `
+                ${avatarHtml}
+                <div class="p-3 ${bubbleClass} text-sm leading-relaxed">
+                    ${isUser ? formatMessage(text) : formatMessage(text)}
+                </div>
+            `;
+
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        };
+
+        // Bouncing dots typing indicator bubble
+        let typingIndicator = null;
+
+        const showTypingIndicator = () => {
+            if (typingIndicator) return;
+
+            typingIndicator = document.createElement('div');
+            typingIndicator.className = 'flex items-start space-x-2.5 max-w-[85%] message-animate';
+            typingIndicator.innerHTML = `
+                <div class="w-7 h-7 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 flex-shrink-0">
+                    <i class="fas fa-robot text-xs"></i>
+                </div>
+                <div class="p-3 bg-slate-100 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 rounded-2xl rounded-tl-none border border-slate-200/40 dark:border-slate-800/40 shadow-sm flex items-center space-x-2">
+                    <span class="text-xs text-slate-400 dark:text-slate-500">Thinking</span>
+                    <span class="typing-dots inline-flex items-center space-x-1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </div>
+            `;
+
+            chatbotMessages.appendChild(typingIndicator);
+            scrollToBottom();
+        };
+
+        const hideTypingIndicator = () => {
+            if (typingIndicator) {
+                typingIndicator.remove();
+                typingIndicator = null;
+            }
+        };
+
+        // Send API Request to backend FastAPI on Hugging Face Spaces
+        const sendMessage = async (messageText) => {
+            if (!messageText.trim()) return;
+
+            // Render user message immediately
+            appendMessage('user', messageText);
+            chatbotInput.value = '';
+
+            // Add typing indicator
+            showTypingIndicator();
+
+            // Store message text to send
+            const userMsgText = messageText;
+
+            try {
+                // Fetch backend URL from config, default to local if running on localhost/127.0.0.1, otherwise Hugging Face Space URL
+                const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const defaultBackendUrl = isLocal ? 'http://127.0.0.1:8000/chat' : 'https://rahulhirur-rahulhirur-portfolio-ai.hf.space/chat';
+                const BACKEND_URL = localStorage.getItem('chatbot_backend_url') || defaultBackendUrl;
+                
+                const response = await fetch(BACKEND_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: userMsgText,
+                        history: chatHistory
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('API Request Failed');
+                }
+
+                const data = await response.json();
+                const aiResponse = data.response;
+
+                // Hide typing animation
+                hideTypingIndicator();
+
+                // Append assistant message
+                appendMessage('model', aiResponse);
+
+                // If the AI (via LangChain) signalled that the scheduling form should appear, show it
+                if (data.action === 'show_schedule_form') {
+                    setTimeout(showSchedulingForm, 300);
+                }
+
+                // Update internal chat history for conversation tracking
+                chatHistory.push({ role: 'user', text: userMsgText });
+                chatHistory.push({ role: 'model', text: aiResponse });
+
+                // Keep only last 10 turns of history (20 messages) to avoid size limit
+                if (chatHistory.length > 20) {
+                    chatHistory = chatHistory.slice(-20);
+                }
+
+            } catch (error) {
+                console.error('Chatbot error:', error);
+                hideTypingIndicator();
+                
+                // Show a helpful offline / configuration fallback message
+                appendMessage('model', "I'm having trouble connecting to my brain right now. The AI backend hosted on Hugging Face might be waking up (since it sleeps when inactive) or it is still being configured. Please wait a moment and try again, or contact Rahul directly via rjhirur@gmail.com!");
+            }
+        };
+
+        // Bind form submit — always sends to AI; scheduling form is triggered by the AI's response
+        chatbotForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = chatbotInput.value.trim();
+            if (!message) return;
+            sendMessage(message);
+        });
+
+        // ── Scheduling Mini-Form ────────────────────────────────────────────────
+
+        // Render an interactive mini-form card inside the chat stream
+        const showSchedulingForm = () => {
+            if (schedulingFormActive) return;
+            schedulingFormActive = true;
+
+            // Hide the default suggestion chips
+            chatChipsContainer.classList.add('hidden');
+
+            const formId = 'sched-form-' + Date.now();
+            const formWrapper = document.createElement('div');
+            formWrapper.className = 'w-full max-w-[95%] message-animate';
+            formWrapper.id = formId;
+
+            formWrapper.innerHTML = `
+                <div class="mt-1 rounded-2xl rounded-tl-none border border-indigo-200/60 dark:border-indigo-800/50 bg-gradient-to-br from-white to-indigo-50/30 dark:from-slate-900 dark:to-indigo-950/20 shadow-md overflow-hidden">
+                    <!-- Form header -->
+                    <div class="px-4 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-calendar-check text-white text-sm"></i>
+                            <span class="text-white text-sm font-semibold">Schedule a Meeting with Rahul</span>
+                        </div>
+                        <button type="button" id="sched-cancel-${formId}" class="w-6 h-6 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-all focus:outline-none">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    </div>
+                    <!-- Form body -->
+                    <div class="p-4 space-y-3">
+                        <!-- Name -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Your Name <span class="text-red-400">*</span></label>
+                            <input id="sched-name-${formId}" type="text" placeholder="e.g. Jane Smith" class="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 placeholder-slate-400 transition-all" />
+                        </div>
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Your Email <span class="text-red-400">*</span></label>
+                            <input id="sched-email-${formId}" type="email" placeholder="e.g. jane@company.com" class="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 placeholder-slate-400 transition-all" />
+                        </div>
+                        <!-- Duration chips -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">Meeting Duration</label>
+                            <div class="flex gap-2">
+                                <button type="button" data-duration="15" class="duration-chip flex-1 py-2 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none">15 min</button>
+                                <button type="button" data-duration="30" class="duration-chip flex-1 py-2 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none">30 min</button>
+                                <button type="button" data-duration="45" class="duration-chip flex-1 py-2 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none">45 min</button>
+                                <button type="button" data-duration="60" class="duration-chip flex-1 py-2 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all focus:outline-none">60 min</button>
+                            </div>
+                        </div>
+                        <!-- Preferred Date + Time -->
+                        <div class="flex gap-2">
+                            <div class="flex-1">
+                                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Preferred Date <span class="text-red-400">*</span></label>
+                                <input id="sched-date-${formId}" type="date" class="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:border-indigo-500 text-slate-800 dark:text-slate-100 transition-all" />
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Available Slots <span class="text-red-400">*</span></label>
+                                <div id="sched-slot-picker-${formId}" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 dark:text-slate-500 italic">Pick a date first</div>
+                            </div>
+                        </div>
+                        <!-- Submit -->
+                        <button type="button" id="sched-submit-${formId}" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-sm font-semibold transition-all shadow-md hover:shadow-indigo-500/25 focus:outline-none">
+                            <i class="fas fa-calendar-check mr-2"></i>Find Available Slots
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            chatbotMessages.appendChild(formWrapper);
+            scrollToBottom();
+
+            // ── Live slot fetching ────────────────────────────────────────────
+            let selectedSlotIso  = '';   // ISO string of the chosen slot
+            let selectedSlotTime = '';   // HH:MM of the chosen slot
+
+            const slotPicker = document.getElementById(`sched-slot-picker-${formId}`);
+            const dateInput   = document.getElementById(`sched-date-${formId}`);
+
+            const renderSlotPicker = (slots) => {
+                if (!slots || slots.length === 0) {
+                    slotPicker.innerHTML = '<span class="text-red-400 text-xs">No slots available on this date</span>';
+                    selectedSlotIso = '';
+                    return;
+                }
+                slotPicker.innerHTML = '';
+                const sel = document.createElement('select');
+                sel.className = 'w-full bg-transparent text-sm text-slate-800 dark:text-slate-100 focus:outline-none';
+                const placeholder = document.createElement('option');
+                placeholder.value = '';
+                placeholder.textContent = '-- Choose a slot --';
+                sel.appendChild(placeholder);
+                slots.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.time;
+                    opt.dataset.iso = s.iso;
+                    opt.textContent = s.label;
+                    sel.appendChild(opt);
+                });
+                sel.addEventListener('change', () => {
+                    const chosen = sel.options[sel.selectedIndex];
+                    selectedSlotIso  = chosen.dataset.iso  || '';
+                    selectedSlotTime = chosen.value        || '';
+                });
+                slotPicker.appendChild(sel);
+            };
+
+            const fetchSlots = async () => {
+                const date = dateInput.value;
+                if (!date) return;
+                slotPicker.innerHTML = '<span class="text-slate-400 text-xs"><i class="fas fa-spinner fa-spin mr-1"></i>Loading slots…</span>';
+                selectedSlotIso = '';
+                try {
+                    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                    const base = isLocal ? 'http://127.0.0.1:8000' : 'https://rahulhirur-rahulhirur-portfolio-ai.hf.space';
+                    const r = await fetch(`${base}/slots?date=${date}&duration=${selectedDuration}&timezone=Asia/Kolkata`);
+                    const data = await r.json();
+                    renderSlotPicker(data.slots || []);
+                } catch(e) {
+                    slotPicker.innerHTML = '<span class="text-red-400 text-xs">Could not load slots</span>';
+                }
+            };
+
+            // Fetch slots when date changes
+            dateInput.addEventListener('change', fetchSlots);
+
+            // Duration chip toggle selection
+            let selectedDuration = 30; // default
+            const durationChips = formWrapper.querySelectorAll('.duration-chip');
+            // Pre-select 30 min
+            durationChips.forEach(btn => {
+                if (parseInt(btn.dataset.duration) === 30) {
+                    btn.classList.add('border-indigo-500', 'dark:border-indigo-400', 'text-indigo-600', 'dark:text-indigo-400', 'bg-indigo-50', 'dark:bg-indigo-950/30');
+                    btn.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-300');
+                }
+                btn.addEventListener('click', () => {
+                    selectedDuration = parseInt(btn.dataset.duration);
+                    durationChips.forEach(b => {
+                        b.classList.remove('border-indigo-500', 'dark:border-indigo-400', 'text-indigo-600', 'dark:text-indigo-400', 'bg-indigo-50', 'dark:bg-indigo-950/30');
+                        b.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-300', 'bg-white', 'dark:bg-slate-800');
+                    });
+                    btn.classList.add('border-indigo-500', 'dark:border-indigo-400', 'text-indigo-600', 'dark:text-indigo-400', 'bg-indigo-50', 'dark:bg-indigo-950/30');
+                    btn.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-300', 'bg-white', 'dark:bg-slate-800');
+                    // Re-fetch slots if date already chosen
+                    if (dateInput.value) fetchSlots();
+                });
+            });
+
+            // Cancel button
+            document.getElementById(`sched-cancel-${formId}`).addEventListener('click', () => {
+                formWrapper.remove();
+                schedulingFormActive = false;
+                chatChipsContainer.classList.remove('hidden');
+            });
+
+            // Submit handler
+            document.getElementById(`sched-submit-${formId}`).addEventListener('click', () => {
+                const name  = document.getElementById(`sched-name-${formId}`).value.trim();
+                const email = document.getElementById(`sched-email-${formId}`).value.trim();
+                const date  = dateInput.value;
+
+                if (!name)  { document.getElementById(`sched-name-${formId}`).focus();  return; }
+                if (!email || !email.includes('@')) { document.getElementById(`sched-email-${formId}`).focus(); return; }
+                if (!date)  { dateInput.focus(); return; }
+                if (!selectedSlotIso) { slotPicker.querySelector('select')?.focus(); return; }
+
+                // Compose message using the exact ISO slot so the AI can book precisely
+                const composedMsg = `Hi! I'd like to schedule a ${selectedDuration}-minute meeting with Rahul. My name is ${name}, my email is ${email}, and my preferred slot is ${selectedSlotIso} (IST, ${selectedDuration} min).`;
+
+                // Remove the form from the chat
+                formWrapper.remove();
+                schedulingFormActive = false;
+                chatChipsContainer.classList.remove('hidden');
+
+                // Send as a normal chat message
+                sendMessage(composedMsg);
+            });
+        };
+
+        // Bind preset chips
+        chatChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const messageText = chip.textContent.trim();
+                // Scheduling chip triggers the mini-form directly, no AI call needed
+                if (chip.classList.contains('schedule-chip')) {
+                    showSchedulingForm();
+                } else {
+                    sendMessage(messageText);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
