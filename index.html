@@ -1516,16 +1516,45 @@
                 }
             });
         });
+    </script>
 
-        // Tap/click to expand for profile picture
+    <!-- Lightbox Modal for Profile Photo -->
+    <div id="profile-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="relative max-w-[90%] max-h-[85%] scale-90 transition-all duration-300 lightbox-content">
+            <button id="lightbox-close" class="absolute -top-12 right-0 text-white hover:text-indigo-450 transition-colors text-2xl focus:outline-none" aria-label="Close photo">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="profile.jpg" alt="Rahul J Hirur" class="max-w-full max-h-[75vh] rounded-2xl border-2 border-white/20 shadow-2xl object-contain" />
+        </div>
+    </div>
+
+    <script>
+        // Click/tap to open lightbox for profile picture
         const profileTrigger = document.querySelector('.hero-photo-trigger');
-        if (profileTrigger) {
+        const lightbox = document.getElementById('profile-lightbox');
+        const lightboxContent = lightbox?.querySelector('.lightbox-content');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        if (profileTrigger && lightbox && lightboxContent) {
             profileTrigger.addEventListener('click', (e) => {
-                profileTrigger.classList.toggle('expanded');
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                lightbox.classList.add('opacity-100', 'pointer-events-auto');
+                lightboxContent.classList.remove('scale-90');
+                lightboxContent.classList.add('scale-100');
                 e.stopPropagation();
             });
-            document.addEventListener('click', () => {
-                profileTrigger.classList.remove('expanded');
+
+            const closeLightbox = () => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+                lightboxContent.classList.add('scale-90');
+                lightboxContent.classList.remove('scale-100');
+            };
+
+            lightboxClose?.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', closeLightbox);
+            lightboxContent.addEventListener('click', (e) => {
+                e.stopPropagation();
             });
         }
     </script>

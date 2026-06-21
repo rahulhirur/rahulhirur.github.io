@@ -81,15 +81,10 @@ body, nav, section, .skill-card, button, a, svg, path {
     border-color: rgba(51, 65, 85, 0.8);
 }
 
-/* Hover state on PC, expanded class on mobile tap */
-.hero-photo-trigger:hover .hero-photo-container,
-.hero-photo-trigger.expanded .hero-photo-container {
-    width: 220px;
-    height: 220px;
-    top: 42px;
-    left: -20px;
-    border-width: 3px;
-    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+/* Hover state on PC: gentle scale in place */
+.hero-photo-trigger:hover .hero-photo-container {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* AI Chatbot Widget Styles */
