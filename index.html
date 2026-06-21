@@ -851,10 +851,9 @@
         // --- 1. Dark Mode Toggle & Preference Initialization ---
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         
-        // Check local storage or system preference
+        // Check local storage theme preference, default to light
         const initTheme = () => {
-            if (localStorage.getItem('theme') === 'dark' || 
-                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (localStorage.getItem('theme') === 'dark') {
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark');
