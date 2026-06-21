@@ -1,3 +1,13 @@
+---
+title: Rahul J Hirur Portfolio AI Backend
+emoji: 🤖
+colorFrom: indigo
+colorTo: violet
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Portfolio AI Chatbot Backend
 
 A provider-agnostic FastAPI backend proxy for Rahul J Hirur's Portfolio AI Chatbot widget. It utilizes the standard OpenAI SDK format, allowing you to connect it to **any LLM provider** (Cerebras, Mistral, Groq, OpenAI, DeepSeek, OpenRouter, etc.) by setting simple environment variables.
