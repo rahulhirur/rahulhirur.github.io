@@ -205,7 +205,7 @@ def create_booking(
         if length_in_minutes and length_in_minutes > 0:
             payload["lengthInMinutes"] = length_in_minutes
         if notes:
-            payload["responses"] = {"notes": notes}
+            payload["bookingFieldsResponses"] = {"notes": notes}
 
         def _safe_print(msg: str):
             """Print safely even when stdout is not UTF-8 (e.g. Windows CP1252)."""
