@@ -1536,13 +1536,12 @@
         const lightboxClose = document.getElementById('lightbox-close');
 
         if (profileTrigger && lightbox && lightboxContent) {
-            profileTrigger.addEventListener('click', (e) => {
+            const openLightbox = () => {
                 lightbox.classList.remove('opacity-0', 'pointer-events-none');
                 lightbox.classList.add('opacity-100', 'pointer-events-auto');
                 lightboxContent.classList.remove('scale-90');
                 lightboxContent.classList.add('scale-100');
-                e.stopPropagation();
-            });
+            };
 
             const closeLightbox = () => {
                 lightbox.classList.add('opacity-0', 'pointer-events-none');
@@ -1550,6 +1549,42 @@
                 lightboxContent.classList.add('scale-90');
                 lightboxContent.classList.remove('scale-100');
             };
+
+            // Click/tap toggles lightbox (mobile & PC)
+            profileTrigger.addEventListener('click', (e) => {
+                if (lightbox.classList.contains('opacity-0')) {
+                    openLightbox();
+                } else {
+                    closeLightbox();
+                }
+                e.stopPropagation();
+            });
+
+            // Hover open (PC only)
+            profileTrigger.addEventListener('mouseenter', () => {
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    openLightbox();
+                }
+            });
+
+            // Hover close (PC only)
+            profileTrigger.addEventListener('mouseleave', (e) => {
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    const toElement = e.relatedTarget;
+                    if (toElement && !lightbox.contains(toElement) && toElement !== profileTrigger) {
+                        closeLightbox();
+                    }
+                }
+            });
+
+            lightbox.addEventListener('mouseleave', (e) => {
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    const toElement = e.relatedTarget;
+                    if (toElement && toElement !== profileTrigger && !profileTrigger.contains(toElement)) {
+                        closeLightbox();
+                    }
+                }
+            });
 
             lightboxClose?.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', closeLightbox);
