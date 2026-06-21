@@ -764,15 +764,28 @@
         <i class="fas fa-arrow-up text-sm z-10"></i>
     </button>
 
-    <!-- AI Chatbot Floating Button -->
-    <button id="chatbot-launcher-btn" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-xl flex items-center justify-center transition-all duration-300 focus:outline-none chatbot-orb" aria-label="Open AI Assistant">
-        <i class="fas fa-robot text-xl"></i>
-        <!-- Pulse Status Indicator -->
-        <span class="absolute top-0 right-0 flex h-3.5 w-3.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white dark:border-slate-900"></span>
-        </span>
-    </button>
+    <!-- AI Chatbot Floating Container -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-2 pointer-events-none">
+        <!-- Tooltip speech bubble (UX Upgrade 1) -->
+        <div id="chatbot-tooltip" class="pointer-events-auto bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-xl border border-slate-200/60 dark:border-slate-800/80 relative mb-1.5 flex items-center space-x-2 transition-all duration-300 opacity-0 scale-95 translate-y-2 pointer-events-none max-w-[240px]">
+            <span>Hi! Ask me anything about Rahul.</span>
+            <button id="close-tooltip-btn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors focus:outline-none ml-1.5" aria-label="Dismiss tooltip">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Tooltip arrow -->
+            <div class="absolute bottom-[-6px] right-[22px] w-3 h-3 bg-white dark:bg-slate-900 border-r border-b border-slate-200/60 dark:border-slate-800/80 transform rotate-45"></div>
+        </div>
+
+        <!-- Launcher Button -->
+        <button id="chatbot-launcher-btn" class="pointer-events-auto w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-xl flex items-center justify-center transition-all duration-300 focus:outline-none chatbot-orb relative" aria-label="Open AI Assistant">
+            <i class="fas fa-robot text-xl"></i>
+            <!-- Pulse Status Indicator -->
+            <span class="absolute top-0 right-0 flex h-3.5 w-3.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white dark:border-slate-900"></span>
+            </span>
+        </button>
+    </div>
 
     <!-- AI Chatbot Panel -->
     <div id="chatbot-panel" class="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[550px] max-h-[calc(100vh-8rem)] rounded-2xl flex flex-col bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-2xl transition-all duration-300 transform scale-95 translate-y-4 opacity-0 pointer-events-none chat-panel chat-panel-glow">
@@ -1091,10 +1104,21 @@
         const chatbotMessages = document.getElementById('chatbot-messages');
         const chatChips = document.querySelectorAll('.chat-chip');
         const chatChipsContainer = document.getElementById('chat-chips-container');
+        const chatbotTooltip = document.getElementById('chatbot-tooltip');
+        const closeTooltipBtn = document.getElementById('close-tooltip-btn');
 
         let isChatOpen = false;
         let chatHistory = []; // Tracks formatting: [{"role": "user"|"model", "text": "..."}]
         let schedulingFormActive = false; // Guard to prevent duplicate forms
+
+        // Dismiss Welcome Tooltip
+        const dismissTooltip = () => {
+            if (chatbotTooltip) {
+                chatbotTooltip.classList.add('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-2');
+                chatbotTooltip.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+                localStorage.setItem('chatbot_tooltip_dismissed', 'true');
+            }
+        };
 
         // Toggle panel
         const toggleChatbot = () => {
@@ -1105,6 +1129,7 @@
                 chatbotInput.focus();
                 // Push Back to Top button z-index down so it doesn't float over the panel
                 backToTopBtn.style.zIndex = "30";
+                dismissTooltip();
             } else {
                 chatbotPanel.classList.add('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-4');
                 chatbotPanel.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100', 'translate-y-0');
@@ -1114,6 +1139,21 @@
 
         chatbotLauncherBtn.addEventListener('click', toggleChatbot);
         chatbotCloseBtn.addEventListener('click', toggleChatbot);
+
+        if (closeTooltipBtn) {
+            closeTooltipBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dismissTooltip();
+            });
+        }
+
+        // Show welcome tooltip after 5 seconds delay (UX Upgrade 1)
+        setTimeout(() => {
+            if (chatbotTooltip && !isChatOpen && !localStorage.getItem('chatbot_tooltip_dismissed')) {
+                chatbotTooltip.classList.remove('opacity-0', 'pointer-events-none', 'scale-95', 'translate-y-2');
+                chatbotTooltip.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+            }
+        }, 5000);
 
         // Markdown formatter: bold, bullet lists, and clickable links
         const formatMessage = (text) => {
@@ -1424,7 +1464,12 @@
             const fetchSlots = async () => {
                 const date = dateInput.value;
                 if (!date) return;
-                slotPicker.innerHTML = '<span class="text-slate-400 text-xs"><i class="fas fa-spinner fa-spin mr-1"></i>Loading slots…</span>';
+                slotPicker.innerHTML = `
+                    <div class="grid grid-cols-2 gap-2 w-full animate-pulse my-1">
+                        <div class="h-6 bg-slate-200/60 dark:bg-slate-850 rounded-lg"></div>
+                        <div class="h-6 bg-slate-200/60 dark:bg-slate-850 rounded-lg"></div>
+                    </div>
+                `;
                 selectedSlotIso = '';
                 try {
                     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
