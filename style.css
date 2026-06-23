@@ -158,6 +158,11 @@ body, nav, section, .skill-card, button, a, svg, path {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.chat-messages {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Messages area customized scrollbar */
 .chat-messages::-webkit-scrollbar {
     width: 6px;
