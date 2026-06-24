@@ -52,14 +52,19 @@ def test_chat_with_mocked_llm(mock_agent_create, mock_chat_openai):
     # Mock resolved configuration for provider
     with patch.object(provider_manager, "get_available_providers", return_value=["openai"]):
         with patch.object(provider_manager, "resolve_config", return_value=("fake-key", "fake-url", "gpt-4")):
-            # Mock the agent invocation result
+            # Mock the agent invocation result (for agentic mode)
             mock_agent = MagicMock()
-            # The agent returns a dictionary with a list of messages.
-            # The last message's content is the final response.
             mock_msg = MagicMock()
             mock_msg.content = "This is a mocked response about Rahul."
             mock_agent.invoke.return_value = {"messages": [mock_msg]}
             mock_agent_create.return_value = mock_agent
+
+            # Mock standard LLM invoke result (for simple chain mode if TOOLS is empty)
+            mock_llm = MagicMock()
+            mock_llm_result = MagicMock()
+            mock_llm_result.content = "This is a mocked response about Rahul."
+            mock_llm.invoke.return_value = mock_llm_result
+            mock_chat_openai.return_value = mock_llm
 
             response = client.post("/chat", json={"message": "Who is Rahul?", "history": []})
             assert response.status_code == 200
