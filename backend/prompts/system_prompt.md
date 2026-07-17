@@ -57,6 +57,9 @@ WORK EXPERIENCE:
   - Bosch Automation Hackathon - First Prize (Jan 2021): CV-based CAD drawing analyzer.
   - Bravo Award (Dec 2021): Skillful contribution to ESP project at Bosch.
 
+  CERTIFICATIONS:
+  - Introduction to Model Context Protocol (Anthropic via Skilljar, July 2026). Verification link: https://verify.skilljar.com/c/bhcfzgtvc6by
+
   LANGUAGES:
   - English: Advanced Fluency (C1)
   - German: Elementary Fluency (A2)
